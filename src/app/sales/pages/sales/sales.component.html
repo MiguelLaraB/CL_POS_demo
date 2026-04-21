@@ -1,0 +1,150 @@
+
+<!-- Contenedor principal -->
+<div class="sales-root">
+
+  <!-- Área central (Categorias y productos) -->
+
+ <main class="sales-main">
+
+    <!-- ======= Categorías + Productos unificados ======= -->
+    <section class="catalog-section">
+      <h2 class="section-title">Categorías</h2>
+
+      <!-- Slider horizontal de categorías -->
+      <div class="category-scroll" role="list">
+        @for (cat of categorias; track cat) {
+          <button class="category-btn" type="button">{{ cat }}</button>
+        }
+      </div>
+
+    <!-- Espacio / separación -->
+    <h2 class="section-title">Productos</h2>
+
+    <div class="products-grid" aria-label="Lista de productos">
+        @for (producto of productos; track producto.id) {
+          <article class="product-card">
+            <img class="product-img" [src]="producto.imagen" [alt]="producto.nombre" />
+            <h3 class="product-name">{{ producto.nombre }}</h3>
+            <p class="product-desc">{{ producto.descripcion }}</p>
+
+            <div class="product-row">
+              <span class="product-price">${{ producto.precio }}</span>
+              <span class="product-stock">Stock: {{ producto.stock }}</span>
+            </div>
+
+            <button class="add-btn" type="button" (click)="addToCart(producto)">
+              Añadir
+            </button>
+          </article>
+        }
+      </div>
+    </section>
+  </main>
+
+  <!-- Panel de detalle de venta -->
+  <aside class="sales-panel" aria-label="Detalle de venta">
+
+    <div class="panel-header">
+      <h3>Detalle de Venta</h3>
+    </div>
+
+    <!-- Línea divisoria -->
+    <div class="divider"></div>
+
+    <!-- Lista de productos añadidos con scroll exclusivo -->
+    <div class="cart-list">
+      @if (cart.length === 0) {
+        <p class="empty-cart">No hay productos agregados.</p>
+      } @else {
+        @for (item of cart; track item.productId) {
+
+          <!-- Item pequeño donde se ve el roducto -->
+          <div class="cart-item">
+            <img class="cart-item-img" [src]="item.imagen" [alt]="item.nombre" />
+
+            <div class="cart-item-body">
+              <div class="cart-item-top">
+                <div class="cart-item-name">{{ item.nombre }}</div>
+
+                <!-- Botón para eliminar-->
+                <button class="remove-btn" type="button" (click)="removeItem(item)">✕</button>
+              </div>
+
+              <div class="cart-item-desc">Modelo / info</div>
+
+              <div class="cart-item-bottom">
+
+                <!-- Precio del producto -->
+                <div class="cart-price">${{ item.precio }}</div>
+
+                <!-- Botón para cantidad -->
+                <div class="qty-control" role="group" aria-label="Control de cantidad">
+                  <button class="qty-circle" type="button" (click)="decreaseQty(item)">−</button>
+                  <div class="qty-value" title="Cantidad">{{ item.qty }}</div>
+                  <button class="qty-circle" type="button" (click)="increaseQty(item)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <!-- Resumen (subtotal, descuento, IVA)-->
+    <div class="panel-summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>${{ subtotal }}</span>
+      </div>
+      <div class="summary-row">
+        <span>Descuento</span>
+        <span>${{ descuento }}</span>
+      </div>
+      <div class="summary-row">
+        <span>IVA</span>
+        <span>${{ iva }}</span>
+      </div>
+
+      <div class="summary-total">
+        <span>Total</span>
+        <span class="total-amount">${{ total }}</span>
+      </div>
+    </div>
+
+    <!-- Método de pago -->
+    <div class="payment-section">
+      <div class="payment-title">Seleccionar método de pago:</div>
+
+      <div class="payment-buttons">
+        <!-- Efectivo -->
+        <button
+          class="payment-btn"
+          [class.selected]="selectedPayment === 'efectivo'"
+          (click)="selectPayment('efectivo')"
+          type="button"
+        >
+          <img [src]="cashIconPath" alt="cash-icon" class = "icon" />
+          <div class="payment-text">Pago en efectivo</div>
+        </button>
+
+        <!-- Tarjeta -->
+        <button
+          class="payment-btn"
+          [class.selected]="selectedPayment === 'tarjeta'"
+          (click)="selectPayment('tarjeta')"
+          type="button"
+        >
+          <img [src]="cardIconPath" alt="card-icon" class= "icon" />
+          <div class="payment-text">Pago con tarjeta</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Procesar Transacción -->
+    <div class="panel-footer">
+      <button class="process-btn" type="button" (click)="processTransaction()">
+        Procesar transacción
+      </button>
+    </div>
+  </aside>
+</div>

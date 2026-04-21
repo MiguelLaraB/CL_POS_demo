@@ -1,0 +1,414 @@
+
+/* ====== Root general ====== */
+.sales-root {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px); /* Ajusta la altura según el navbar */
+  overflow: hidden; /* evita doble scroll */
+  background: var(--page-bg, #f9fafc);
+}
+
+/* ====== Área principal (izquierda) ====== */
+/* Margin-right igual al ancho del panel fijo para que no se solapen */
+.sales-main {
+  flex: 1;
+  padding: 10px;
+  background: var(--page-bg, #f9fafc);
+  margin-right: 360px; /* espacio reservado para el panel fijo */
+  overflow-y: auto;
+  height: 100%;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) saturate(100%);
+  transition: filter 0.3s ease;
+}
+
+
+/* Títulos de sección */
+.section-title {
+  font-size: 1.5rem;
+  margin: 6px 0 12px 0;
+  color: #1f2937;
+}
+
+/* ========== CATEGORÍAS: scroll horizontal ========== */
+.category-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+}
+
+/* estilizado de scrollbar (WebKit) */
+.category-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.category-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 6px;
+}
+
+/* Botón de categoría: borde azul, fondo blanco, texto negro */
+.category-btn {
+  flex-shrink: 0;            /* que no se encoja en el eje x */
+  border: 1px solid #233387; /* borde azul */
+  background: #ffffff;       /* fondo blanco */
+  color: #111827;            /* texto negro (oscuro) */
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+  font-size: 0.95rem;
+}
+
+/* Hover semitransparente gris */
+.category-btn:hover {
+  background: #e6e6e6;
+}
+
+/* ========== GRID DE PRODUCTOS ========== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  padding-right: 10px;
+}
+
+/* scrollbar productos 
+.products-grid::-webkit-scrollbar {
+  width: 8px;
+}
+.products-grid::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 6px;
+}
+*/
+
+/* Tarjeta de producto */
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+  transition: transform 0.12s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Imagen: alto fijo, contenedor centrado */
+.product-img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Nombre y descripción */
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 4px 0;
+  text-align: center;
+}
+.product-desc {
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Fila precio / stock */
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.product-price {
+  color: #233387;
+  font-weight: 600;
+}
+.product-stock {
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+/* Botón "Añadir" (azul) */
+.add-btn {
+  background: #233387;
+  color: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s ease;
+}
+.add-btn:hover {
+  background: #233387;
+}
+
+/* ========== PANEL DERECHO FIJO ========== */
+.sales-panel {
+  position: fixed;
+  right: 0;
+  top: 60px; /* bajar el panel para alinearlo con el navbar */
+  height: calc(100vh - 90px); /* ajusta al alto visible */
+  width: 350px;
+  background: #ffffff;
+  border-left: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-shadow: -2px 0 6px rgba(2, 6, 23, 0.03);
+  z-index: 40;
+}
+
+/* Header del panel */
+.panel-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #111827;
+}
+
+/* Línea divisoria */
+.divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 10px 0 12px 0;
+}
+
+/* Lista de items añadidos: tendrá scroll propio */
+.cart-list {
+  overflow-y: auto;
+  padding-right: 8px;
+  /* altura calculada: restar header, divider, resumen, pagos y footer */
+  height: calc(100vh - 360px);
+}
+
+/* mensaje cart vacío */
+.empty-cart {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Item del carrito: imagen a la izquierda, info a la derecha */
+.cart-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 4px;
+  border-bottom: 1px dashed #eef2f7;
+  align-items: center;
+}
+
+/* Imagen pequeña cuadrada */
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* Cuerpo del item */
+.cart-item-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* fila superior dentro del item: nombre + eliminar */
+.cart-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nombre */
+.cart-item-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+/* Botón eliminar pequeño */
+.remove-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* descripción pequeña */
+.cart-item-desc {
+  color: #6b7280;
+  font-size: 0.82rem;
+  margin: 4px 0;
+}
+
+/* parte baja con precio y control de cantidad */
+.cart-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* precio dentro del carrito */
+.cart-price {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ====== Control de cantidad compuesto ====== */
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #e6f0ff;          /* tono azul claro para el contenedor */
+  border-radius: 999px;         /* orillas redondeadas tipo "pill" */
+  padding: 6px;
+}
+
+/* botones circulares + / - */
+.qty-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #233387;
+  color: #fff;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* valor de cantidad (capacidad visual para 3 dígitos) */
+.qty-value {
+  min-width: 34px;
+  text-align: center;
+  font-weight: 600;
+  color: #0f172a;
+  padding: 0 6px;
+}
+
+/* ====== Resumen: subtotal / descuento / IVA / total ====== */
+.panel-summary {
+  margin-top: 12px;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 12px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  color: #374151;
+}
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.total-amount {
+  color: #233387; /* total en azul */
+}
+
+/* ====== Sección de método de pago ====== */
+.payment-section {
+  margin-top: 12px;
+}
+.payment-title {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+/* Contenedor botones pago: cada uno ocupa 50% */
+.payment-buttons {
+  display: flex;
+  gap: 8px;
+}
+.payment-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+  text-align: center;
+}
+.payment-btn img {
+  width: 28px;
+  height: 28px;
+}
+
+/* estilo cuando está seleccionado o hover */
+.payment-btn:hover,
+.payment-btn.selected {
+  background: #eef6ff;
+  border-color: #cfe7ff;
+  color: #0366d6;
+}
+
+/* texto pequeño dentro del botón de pago */
+.payment-text {
+  font-size: 0.85rem;
+}
+
+/* ====== Footer con botón procesar ====== */
+.panel-footer {
+  margin-top: auto; /* empuja el footer hacia abajo del panel */
+  padding-top: 12px;
+}
+.process-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #233387;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.process-btn:hover {
+  background: #0056b3;
+}
+
+/* ====== Responsividad básica ====== */
+@media (max-width: 1100px) {
+  .sales-main {
+    margin-right: 300px; /* reducir margen si necesario */
+  }
+  .sales-panel {
+    width: 300px;
+  }
+}
+@media (max-width: 800px) {
+  /* En pantallas pequeñas podrías ocultar el panel o hacerlo overlay.
+     Aquí reducimos su ancho y el margin */
+  .sales-main {
+    margin-right: 280px;
+  }
+  .sales-panel {
+    width: 280px;
+  }
+}

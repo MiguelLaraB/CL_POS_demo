@@ -1,0 +1,20 @@
+
+<!-- Contenedor general -->
+<div class="layout-container">
+  
+  <!-- Sidebar fijado en la izquierda -->
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <!-- Contenedor derecho (navbar + contenido de la pag) -->
+  <div class="main-content">
+    
+    <!-- Navbar en la parte superior -->
+    <app-navbar class="navbar"></app-navbar>
+
+    <!-- Área dinámica donde se mostrará cada página ej ventas, inventario,etc -->
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+    
+  </div>
+</div>

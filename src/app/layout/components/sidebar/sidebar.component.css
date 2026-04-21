@@ -1,0 +1,71 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  height: 100%;
+  padding: 20px 0;
+}
+
+.sidebar-logo {
+  background-color: #1d2550;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  /* Separación del menú */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  /* Para que no ocupe todo el ancho pero se vea como caja */
+}
+
+.logo-h {
+  max-width: 100%;
+  height: auto;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar-item {
+  width: 100%;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  color: #374151;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #233387;
+  border-radius: 8px;
+  color: #ffffff
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) saturate(100%);
+  transition: filter 0.3s ease;
+}
+
+.sidebar-link:hover .icon {
+  filter: brightness(0) invert(1);
+  /*los iconos se hacen blancos*/
+}
+
+.link-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: inherit;
+}

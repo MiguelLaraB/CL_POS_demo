@@ -1,0 +1,22 @@
+<!-- Contenedor lateral -->
+<div class="sidebar">
+
+  <!-- Logo de la empresa -->
+  <div class="sidebar-logo">
+    <img [src]="logoHorizontalPath" alt="Logo Refaccionaria" class="logo-h" />
+  </div>
+
+  <!-- Lista de botones de navegación -->
+  <nav class="sidebar-nav">
+    <ul class="sidebar-list">
+      @for (item of menuItems; track item.text) {
+        <li class="sidebar-item">
+          <a [routerLink]="item.route" class="sidebar-link">
+            <img [src]="item.icon" [alt]="item.text" class="icon" />
+            <span class="link-text">{{ item.text }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
