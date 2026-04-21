@@ -1,0 +1,110 @@
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000; /* Por encima de todo */
+  background: rgba(10, 15, 30, 0.85); /* Fondo oscuro profundo */
+  backdrop-filter: blur(15px); /* Efecto Glassmorphism */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.overlay-container {
+  background: rgba(255, 255, 255, 0.05); /* Cristal translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.illustration-box {
+  margin-bottom: 24px;
+}
+
+.icon-warning {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.overlay-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.overlay-content {
+  margin-bottom: 32px;
+}
+
+.highlight-text {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.desc-text {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.info-text {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.dismiss-btn {
+  background: #233387; /* Color de identidad de la landing */
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 100%;
+}
+
+.dismiss-btn:hover {
+  background: #2b3eb4; /* Tono un poco más claro para el hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.dismiss-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(15px);
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+  .overlay-container {
+    padding: 30px 20px;
+  }
+  .overlay-title {
+    font-size: 1.25rem;
+  }
+}

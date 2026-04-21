@@ -1,0 +1,22 @@
+<div class="overlay-backdrop">
+  <div class="overlay-container">
+    <div class="illustration-box">
+      <!-- Icono simplificado de advertencia/dispositivo -->
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-warning">
+        <path d="M12 9V14M12 17.01L12.01 16.998M10.29 3.86L1.82 18C1.64537 18.3024 1.55299 18.645 1.55219 18.9939C1.55139 19.3427 1.6422 19.6851 1.81534 19.9861C1.98848 20.2871 2.23785 20.5361 2.53813 20.7077C2.8384 20.8792 3.17882 20.9669 3.525 20.9614H20.475C20.8212 20.9669 21.1616 20.8792 21.4619 20.7077C21.7621 20.5361 22.0115 20.2871 22.1847 19.9861C22.3578 19.6851 22.4486 19.3427 22.4478 18.9939C22.447 18.645 22.3546 18.3024 22.18 18L13.71 3.86C13.5317 3.56619 13.2807 3.32314 12.9812 3.15437C12.6817 2.9856 12.3437 2.89703 12 2.89703C11.6563 2.89703 11.3183 2.9856 11.0188 3.15437C10.7193 3.32314 10.4683 3.56619 10.29 3.86Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1 class="overlay-title">NOTA: Detectamos que estás usando un dispositivo móvil</h1>
+    
+    <div class="overlay-content">
+      <p class="highlight-text">Este sistema está optimizado para computadoras de escritorio.</p>
+      <p class="desc-text">Para una mejor experiencia, te recomendamos acceder desde una PC.</p>
+      <p class="info-text">Algunas funciones pueden no visualizarse correctamente en móvil.</p>
+    </div>
+
+    <button class="dismiss-btn" (click)="onDismiss()">
+      Ver de todos modos
+    </button>
+  </div>
+</div>
