@@ -21,23 +21,23 @@
     <h2 class="section-title">Productos</h2>
 
     <div class="products-grid" aria-label="Lista de productos">
-        @for (producto of productos; track producto.id) {
-          <article class="product-card">
-            <img class="product-img" [src]="producto.imagen" [alt]="producto.nombre" />
-            <h3 class="product-name">{{ producto.nombre }}</h3>
-            <p class="product-desc">{{ producto.descripcion }}</p>
+      @for (producto of productos; track producto.id) {
+        <article class="product-card">
+          <img class="product-img" [src]="producto.imagen" [alt]="producto.nombre" />
+          <h3 class="product-name">{{ producto.nombre }}</h3>
+          <p class="product-desc">{{ producto.descripcion }}</p>
 
-            <div class="product-row">
-              <span class="product-price">${{ producto.precio }}</span>
-              <span class="product-stock">Stock: {{ producto.stock }}</span>
-            </div>
+          <div class="product-row">
+            <span class="product-price">${{ producto.precio }}</span>
+            <span class="product-stock">Stock: {{ producto.stock }}</span>
+          </div>
 
-            <button class="add-btn" type="button" (click)="addToCart(producto)">
-              Añadir
-            </button>
-          </article>
-        }
-      </div>
+          <button class="add-btn" type="button" (click)="addToCart(producto)">
+            Añadir
+          </button>
+        </article>
+      }
+    </div>
     </section>
   </main>
 
