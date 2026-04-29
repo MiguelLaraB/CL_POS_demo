@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 
 export class SidebarComponent {
-  logoHorizontalPath = 'assets/logoCL.png';
+  logoHorizontalPath = 'assets/logo_cl.png';
 
   //Rutas de los iconos de cada sección
 

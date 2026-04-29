@@ -8,20 +8,16 @@
 }
 
 .sidebar-logo {
-  background-color: #1d2550;
-  padding: 15px;
-  border-radius: 12px;
   margin-bottom: 20px;
   /* Separación del menú */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  /* Para que no ocupe todo el ancho pero se vea como caja */
+  width: 100%;
 }
 
 .logo-h {
-  max-width: 100%;
+  max-width: 70%;
   height: auto;
 }
 
